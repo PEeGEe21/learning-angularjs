@@ -7,14 +7,17 @@
     <title>Document</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="scripts/cribsController.js"></script>
 </head>
 <body ng-app="myApp">
 
         <nav class="navbar bg-dark text-white">
             <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand text-white" href="#">Navbar</a>
             <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button> -->
@@ -36,19 +39,28 @@
 
 
 
-        <div class="container">
+        <div class="container mt-5">
             <div class="row" ng-controller="cribsController">
-                <div class="col-lg-4 col-md-4" >
-                    <div class="card shadow-sm">
-                        <h3>{{cribs}}</h3>
+                <div class="col-lg-4 col-md-6 card-group" ng-repeat="crib in cribs">
+                    <div class="card shadow-sm border-0">
+                        <div style="height: 250px;" class="rounded">
+
+                            <img ng-src="images/{{crib.image}}" class="h-100 w-100 rounded-t"/>
+                        </div>
+                        <div class="card-body ">
+                            <h4>{{crib.address}}</h4>
+                            <p><strong>Type:  </strong> {{crib.type}}</p>
+                            <p><strong>Price:  </strong> {{crib.price | currency}}</p>
+                            <p><strong>Description:  </strong> {{crib.description}}</p>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="app.js"></script>
-    <script src="scripts/cribsController.js"></script>
+    
     
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> -->
 
