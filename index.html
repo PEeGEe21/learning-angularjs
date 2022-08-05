@@ -9,9 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    
+
     <script src="app.js"></script>
     <script src="scripts/cribsController.js"></script>
+    <script src="scripts/cribsFactory.js"></script>
+
 </head>
 <body ng-app="myApp">
 
@@ -41,19 +46,45 @@
 
         <div class="container mt-5">
             <div class="row" ng-controller="cribsController">
-                <div class="col-lg-4 col-md-6 card-group" ng-repeat="crib in cribs">
-                    <div class="card shadow-sm border-0">
+                <div class="col-xl-3 col-lg-4 col-md-6 card-group" ng-repeat="crib in cribs">
+                    <div class="card shadow-sm border-0 mb-4">
                         <div style="height: 250px;" class="rounded">
-
                             <img ng-src="images/{{crib.image}}" class="h-100 w-100 rounded-t"/>
                         </div>
                         <div class="card-body ">
-                            <h4>{{crib.address}}</h4>
-                            <p><strong>Type:  </strong> {{crib.type}}</p>
-                            <p><strong>Price:  </strong> {{crib.price | currency}}</p>
-                            <p><strong>Description:  </strong> {{crib.description}}</p>
+                            <div ng-hide = "showDetails === true">
+
+                            
+                                <h3>{{crib.price | currency}}</h3>
+                                <h4>{{crib.address}}</h4>
+                                <p>{{crib.type}}</p>
+                            </div>
+
+                            <button class="btn btn-xs btn-success" ng-hide="showDetails === true" ng-click="showDetails = !showDetails"> Details
+
+                            </button>
+
+                            <button class="btn btn-xs btn-danger" ng-show="showDetails === true" ng-click="showDetails = !showDetails">Close</button>
 
 
+                            <div class="details" ng-show = "showDetails === true">
+                                <h4>
+                                    <span class="label label-primary">
+                                        Beds: {{crib.details.bedrooms}}
+                                    </span>
+                                    <span class="label label-primary">
+                                        Bathrooms: {{crib.details.bathrooms}}
+                                    </span>
+                                    <span class="label label-primary">
+                                        Sqft: {{crib.details.area}}
+                                    </span>
+                                </h4>
+                                <p>{{crib.description}}</p>
+
+                            </div>
+                            <!-- <h4>{{crib.address}}</h4> -->
+                            <!-- <p><strong>Type:  </strong> {{crib.type}}</p> -->
+                            <!-- <p><strong>Price:  </strong> {{crib.price | currency}}</p> -->
                         </div>
                     </div>
                 </div>

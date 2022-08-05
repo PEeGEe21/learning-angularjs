@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "type": "Condo",
+        "price": 5920933,
+        "address": "213 Grove street",
+        "description": "Excellent place, really nice view",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 921
+        },
+        "image": "crib-1.jpg"
+    },
+    {
+        "id": 2,
+        "type": "House",
+        "price": 3465768,
+        "address": "7834 Winding Way",
+        "description": "Beautiful home with lots of space for a large family",
+        "details": {
+            "bedrooms": 4,
+            "bathrooms": 3,
+            "area": 2145
+        },
+        "image": "crib-2.jpg"
+    },
+    {
+        "id": 3,
+        "type": "Duplex",
+        "price": 78997656,
+        "address": "345 River Lane",
+        "description": "Great neighbourhood and lots of nice green space",
+        "details": {
+            "bedrooms": 3,
+            "bathrooms": 2.5,
+            "area": 1500
+        },
+        "image": "crib-3.jpg"
+    },
+    {
+        "id": 4,
+        "type": "House",
+        "price": 78997656,
+        "address": "7007 Forest Avenue",
+        "description": "Best house on the block",
+        "details": {
+            "bedrooms": 6,
+            "bathrooms": 4.5,
+            "area": 3422
+        },
+        "image": "crib-4.jpg"
+    },
+    {
+        "id": 5,
+        "type": "Condo",
+        "price": 346576,
+        "address": "1857 Andover Court",
+        "description": "Nice little condo with room to grow.",
+        "details": {
+            "bedrooms": 2,
+            "bathrooms": 1.5,
+            "area": 1023
+        },
+        "image": "crib-5.jpg"
+    },
+    {
+        "id": 6,
+        "type": "House",
+        "price": 436087,
+        "address": "213 East Avenue",
+        "description": "You'll love the view",
+        "details": {
+            "bedrooms": 4,
+            "bathrooms": 2.5,
+            "area": 5780
+        },
+        "image": "crib-6.jpg"
+    }
+
+]
