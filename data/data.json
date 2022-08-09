@@ -2,7 +2,7 @@
     {
         "id": 1,
         "type": "Condo",
-        "price": 5920933,
+        "price": 750933,
         "address": "213 Grove street",
         "description": "Excellent place, really nice view",
         "details": {
@@ -15,7 +15,7 @@
     {
         "id": 2,
         "type": "House",
-        "price": 3465768,
+        "price": 270075,
         "address": "7834 Winding Way",
         "description": "Beautiful home with lots of space for a large family",
         "details": {
@@ -28,7 +28,7 @@
     {
         "id": 3,
         "type": "Duplex",
-        "price": 78997656,
+        "price": 350500,
         "address": "345 River Lane",
         "description": "Great neighbourhood and lots of nice green space",
         "details": {
@@ -41,7 +41,7 @@
     {
         "id": 4,
         "type": "House",
-        "price": 78997656,
+        "price": 465000,
         "address": "7007 Forest Avenue",
         "description": "Best house on the block",
         "details": {
@@ -54,7 +54,7 @@
     {
         "id": 5,
         "type": "Condo",
-        "price": 346576,
+        "price": 569090,
         "address": "1857 Andover Court",
         "description": "Nice little condo with room to grow.",
         "details": {
@@ -67,7 +67,7 @@
     {
         "id": 6,
         "type": "House",
-        "price": 436087,
+        "price":    206707,
         "address": "213 East Avenue",
         "description": "You'll love the view",
         "details": {
