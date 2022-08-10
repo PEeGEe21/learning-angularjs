@@ -43,10 +43,10 @@
 
 
         <div class="container mt-5">
-            <div class="px-3 py-4 bg-primary mb-4">
+            <div class="px-3 py-4 bg-white mb-4 shadow ">
                 <div class="row " ng-if="!addListing">
-                    <div class="col-lg-6">
-                        <div class="input-group align-items-center">
+                    <div class="col-lg-6 mb-3">
+                        <div class="input-group align-items-center gap-2">
                             <span class="input-group-addon">Min Price</span>
                             <select name="minPrice" id="minPrice" ng-model="priceInfo.min" class="form-control">
                                 <option value="100000">$100,000</option>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="input-group align-items-center">
+                        <div class="input-group align-items-center gap-2">
                             <span class="input-group-addon">Max Price</span>
                             <select name="maxPrice" id="maxPrice" ng-model="priceInfo.max" class="form-control">
                                 <option value="100000">$100,000</option>
@@ -84,15 +84,15 @@
                 </div>
 
 
-                <button class="btn btn-secondary mt-3" ng-click="addListing = !addListing" ng-show="!addListing">
-                    Add Listing
+                <button class="btn btn-secondary mt-3" ng-click="addListing = !addListing" ng-show="!addListing"  >
+                    Add a Crib
                 </button>
                 <button class="btn btn-danger mt-3" ng-click="addListing = !addListing" ng-show="addListing">
                     Close
                 </button>
 
 
-                <form ng-submit="model.addCrib()" class="listing-form my-3" ng-if="addListing">
+                <form ng-submit="model.addCrib()" class="listing-form my-3" ng-if="addListing" >
                     <h3>Add a Listing</h3>
 
                     <div class="row listing-form-row">
@@ -155,18 +155,95 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-success listing-button" ng-show="addListing">
+                    <button class="btn btn-success listing-button my-3" ng-show="addListing">
                         Add
                     </button>
 
 
                     <pre class="bg-white">{{model.newListing | json}}</pre>
                 </form>
+
+
+
+
+                <form  class="listing-form my-3" ng-if="editListing">
+                    <h3>Edit Crib</h3>
+
+                    <div class="row listing-form-row">
+                        <div class="col-lg-4 mb-3">
+                            <span class="input-group-addon">
+                                Address
+                            </span>
+
+                            <input type="text" placeholder="Enter an address" class="form-control" ng-model="model.existingListing.address" >
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <span class="input-group-addon">
+                                Price
+                            </span>
+
+                            <input type="number" placeholder="Enter a price" class="form-control" ng-model="model.existingListing.price" required>
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <span class="input-group-addon">
+                                Property Types
+                            </span>
+
+                            <select name="propertyType"  id="propertyType" class="form-control" ng-model="model.existingListing.type">
+                                <option value="House">House</option>
+                                <option value="Condo">Condo</option>
+                                <option value="Duplex">Duplex</option>
+                                <option value="Apartment">Apartment</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <span class="input-group-addon">
+                                Description
+                            </span>
+
+                            <div class="w-100">
+                                <textarea rows="5" cols="10" ng-model="model.existingListing.description" class="w-100"></textarea>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <span class="input-group-addon">
+                                Bedrooms
+                            </span>
+
+                            <input type="text" placeholder="Number of bedrooms" class="form-control" ng-model="model.existingListing.details.bedrooms" >
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <span class="input-group-addon">
+                                Baths
+                            </span>
+
+                            <input type="text" placeholder="Number of bathrooms" class="form-control" ng-model="model.existingListing.details.bathrooms" >
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <span class="input-group-addon">
+                                Sqft
+                            </span>
+
+                            <input type="text" placeholder="Square footage" class="form-control" ng-model="model.existingListing.details.area" >
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success listing-button my-3" ng-click="model.saveCribEdit()" ng-show="editListing">
+                        Save
+                    </button>
+                    <button class="btn btn-danger listing-button my-3" ng-click="model.deleteCrib(model.existingListing)" ng-show="editListing">
+                        Delete
+                    </button>
+
+
+                    <!-- <pre class="bg-white">{{model.newListing | json}}</pre> -->
+                </form>
             </div>
             
             <div class="row">
                 <!-- <div class="col-xl-3 col-lg-4 col-md-6 card-group" ng-repeat="crib in cribs"> -->
-                <div class="col-xl-3 col-lg-4 col-md-6 card-group" ng-repeat="crib in model.filterByPrice() | orderBy: '-id' ">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 card-group" ng-repeat="crib in model.filterByPrice() | orderBy: '-id' ">
                     <div class="card shadow-sm border-0 mb-4">
                         <div style="height: 250px;" class="rounded">
                             <img ng-src="images/{{crib.image}}" class="h-100 w-100 rounded-t"/>
@@ -184,18 +261,22 @@
 
                             </button>
 
+                            <button class="btn btn-xs btn-primary" ng-show="showDetails === true" ng-click="model.editCrib(crib)"> Edit
+
+                            </button>
+
                             <button class="btn btn-xs btn-danger" ng-show="showDetails === true" ng-click="showDetails = !showDetails">Close</button>
 
 
                             <div class="details" ng-show = "showDetails === true">
-                                <h4>
-                                    <span class="label label-primary">
+                                <h4 class="mt-3">
+                                    <span class="badge bg-primary mt-2">
                                         Beds: {{crib.details.bedrooms}}
                                     </span>
-                                    <span class="label label-primary">
+                                    <span class="badge bg-primary mt-2">
                                         Bathrooms: {{crib.details.bathrooms}}
                                     </span>
-                                    <span class="label label-primary">
+                                    <span class="badge bg-primary mt-2">
                                         Sqft: {{crib.details.area}}
                                     </span>
                                 </h4>
@@ -215,6 +296,8 @@
     
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="app.js"></script>
     <script src="scripts/cribsController.js"></script>
     <script src="scripts/cribsFactory.js"></script>
